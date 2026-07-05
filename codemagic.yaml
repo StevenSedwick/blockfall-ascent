@@ -84,14 +84,9 @@ workflows:
       - /tmp/xcodebuild_logs/*.log
       - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
     publishing:
-      # Uncomment once App Store Connect app record exists and you're ready
-      # to push builds to TestFlight automatically.
-      #
-      # app_store_connect:
-      #   auth: integration
-      #   submit_to_testflight: true
-      #   beta_groups:
-      #     - Internal
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
       email:
         recipients:
           - Stevensedwick6@gmail.com
