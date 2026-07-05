@@ -43,6 +43,7 @@ workflows:
         - $HOME/.npm
         - node_modules
         - $HOME/Library/Developer/Xcode/DerivedData
+        - $HOME/certs
     scripts:
       - name: Install npm dependencies
         script: |
