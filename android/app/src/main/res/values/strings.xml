@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Blockfall Ascent</string>
+    <string name="title_activity_main">Blockfall Ascent</string>
+    <string name="package_name">com.blockfall.ascent</string>
+    <string name="custom_url_scheme">com.blockfall.ascent</string>
+</resources>

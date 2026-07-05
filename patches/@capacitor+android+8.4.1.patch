@@ -1,0 +1,20 @@
+diff --git a/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java b/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java
+index 0000000..0000001 100644
+--- a/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java
++++ b/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java
+@@ -342,7 +342,13 @@ public class SystemBars extends Plugin {
+     private Integer getWebViewMajorVersion() {
+         PackageInfo info = WebViewCompat.getCurrentWebViewPackage(getContext());
+         if (info != null && info.versionName != null) {
+             String[] versionSegments = info.versionName.split("\\.");
+-            return Integer.valueOf(versionSegments[0]);
++            try {
++                return Integer.valueOf(versionSegments[0]);
++            } catch (NumberFormatException e) {
++                // Some OEM WebView forks (e.g. Kyocera "App_Chromium_M74_for_AFP...")
++                // ship non-numeric version strings. Treat as unknown/legacy.
++                return 0;
++            }
+         }
+ 
+         return 0;

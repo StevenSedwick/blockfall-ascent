@@ -1,0 +1,38 @@
+# Node / Vite
+node_modules/
+dist/
+.vite/
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# Capacitor build artifacts (native projects are committed, build output is not)
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+ios/App/Pods/
+ios/App/build/
+ios/DerivedData/
+
+# Release signing — NEVER commit
+keystore.properties
+*.keystore
+*.jks
+
+# Shipping artifacts (built via `npm run android:build-apk` + zip); not source
+dist-release/
+
+# iOS build artifacts
+ios/App/Pods/
+ios/App/build/
+ios/DerivedData/
+*.ipa
+*.xcarchive/

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Blockfall Ascent splash - 2732x2732 (universal square).
+  Same 80s box-art aesthetic as the icon: sunset sky, sunburst, chrome block
+  hero. Capacitor crops this to the actual device aspect ratio at build.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2732 2732" width="2732" height="2732">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1a0033"/>
+      <stop offset="30%"  stop-color="#4a0e5c"/>
+      <stop offset="55%"  stop-color="#c62368"/>
+      <stop offset="78%"  stop-color="#ff7a29"/>
+      <stop offset="100%" stop-color="#ffe066"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#ffee88"/>
+      <stop offset="75%" stop-color="#ff7a29" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ff2a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="blockChrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#fff5b5"/>
+      <stop offset="18%"  stop-color="#ffe066"/>
+      <stop offset="45%"  stop-color="#ffb020"/>
+      <stop offset="72%"  stop-color="#c46600"/>
+      <stop offset="100%" stop-color="#3a1500"/>
+    </linearGradient>
+    <linearGradient id="topGloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bevelL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bevelR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gridFade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#00ffff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="haze" cx="50%" cy="70%" r="60%">
+      <stop offset="0%"   stop-color="#ff7a29" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff7a29" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="36"/>
+      <feOffset dx="0" dy="48" result="s"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.65"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="2732" height="2732" fill="url(#sky)"/>
+  <rect width="2732" height="2732" fill="url(#haze)"/>
+
+  <!-- Sunburst rays (2.67x icon scale, horizon at y=1920) -->
+  <g transform="translate(1366 1920)" opacity="0.55">
+    <g fill="#ffee88">
+      <polygon points="0,0 -1870,-190 -1870,-80"/>
+      <polygon points="0,0 -1815,-535 -1710,-425"/>
+      <polygon points="0,0 -1495,-1015 -1390,-880"/>
+      <polygon points="0,0 -960,-1440 -855,-1310"/>
+      <polygon points="0,0 -375,-1710 -270,-1655"/>
+      <polygon points="0,0  375,-1710  270,-1655"/>
+      <polygon points="0,0  960,-1440  855,-1310"/>
+      <polygon points="0,0  1495,-1015 1390,-880"/>
+      <polygon points="0,0  1815,-535  1710,-425"/>
+      <polygon points="0,0  1870,-190  1870,-80"/>
+    </g>
+  </g>
+
+  <circle cx="1366" cy="1920" r="534" fill="url(#sun)"/>
+
+  <!-- Retro perspective grid -->
+  <g stroke="url(#gridFade)" stroke-width="5" fill="none" opacity="0.9">
+    <line x1="0"    y1="2732" x2="2732" y2="2732"/>
+    <line x1="213"  y1="2560" x2="2518" y2="2560"/>
+    <line x1="400"  y1="2400" x2="2331" y2="2400"/>
+    <line x1="574"  y1="2266" x2="2158" y2="2266"/>
+    <line x1="720"  y1="2160" x2="2011" y2="2160"/>
+    <line x1="840"  y1="2066" x2="1891" y2="2066"/>
+    <line x1="938"  y1="1994" x2="1793" y2="1994"/>
+    <line x1="1019" y1="1946" x2="1712" y2="1946"/>
+    <line x1="1366" y1="1920" x2="0"    y2="2732"/>
+    <line x1="1366" y1="1920" x2="320"  y2="2732"/>
+    <line x1="1366" y1="1920" x2="640"  y2="2732"/>
+    <line x1="1366" y1="1920" x2="960"  y2="2732"/>
+    <line x1="1366" y1="1920" x2="1174" y2="2732"/>
+    <line x1="1366" y1="1920" x2="1366" y2="2732"/>
+    <line x1="1366" y1="1920" x2="1558" y2="2732"/>
+    <line x1="1366" y1="1920" x2="1770" y2="2732"/>
+    <line x1="1366" y1="1920" x2="2090" y2="2732"/>
+    <line x1="1366" y1="1920" x2="2410" y2="2732"/>
+    <line x1="1366" y1="1920" x2="2732" y2="2732"/>
+  </g>
+
+  <!-- Lightning bolts -->
+  <g fill="#e0f7ff" opacity="0.9" filter="url(#glow)">
+    <polygon points="400,320 587,800 453,853 613,1387 320,800 467,773 347,373"/>
+    <polygon points="2332,480 2160,960 2293,1013 2133,1493 2427,907 2280,880 2400,533"/>
+  </g>
+
+  <!-- Mountain silhouettes on horizon -->
+  <path d="M 0 2080 L 240 1867 L 453 2027 L 693 1813 L 907 2000 L 1120 1840 L 1333 1973
+           L 1600 1813 L 1867 2027 L 2133 1867 L 2400 2000 L 2732 1867 L 2732 2133 L 0 2133 Z"
+        fill="#3a0e4a" opacity="0.6"/>
+
+  <!-- Hero block character (2.67x scale, centered) -->
+  <g transform="translate(832 640)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="1068" height="1068" rx="128" ry="128" fill="url(#blockChrome)"/>
+    <rect x="0" y="0" width="213" height="1068" rx="128" ry="128" fill="url(#bevelL)"/>
+    <rect x="855" y="0" width="213" height="1068" rx="128" ry="128" fill="url(#bevelR)"/>
+    <rect x="21" y="21" width="1026" height="373" rx="107" ry="107" fill="url(#topGloss)"/>
+    <rect x="0" y="0" width="1068" height="1068" rx="128" ry="128"
+          fill="none" stroke="#00e5ff" stroke-width="11" opacity="0.85" filter="url(#glow)"/>
+    <rect x="0" y="0" width="1068" height="1068" rx="128" ry="128"
+          fill="none" stroke="#1a0000" stroke-width="16"/>
+
+    <ellipse cx="360" cy="467" rx="147" ry="139" fill="#1a0000"/>
+    <ellipse cx="708" cy="467" rx="147" ry="139" fill="#1a0000"/>
+    <ellipse cx="360" cy="453" rx="128" ry="120" fill="#ffffff"/>
+    <ellipse cx="708" cy="453" rx="128" ry="120" fill="#ffffff"/>
+    <circle cx="360" cy="400" r="59" fill="#0a0010"/>
+    <circle cx="708" cy="400" r="59" fill="#0a0010"/>
+    <circle cx="373" cy="387" r="16" fill="#00e5ff"/>
+    <circle cx="721" cy="387" r="16" fill="#00e5ff"/>
+    <circle cx="341" cy="379" r="19" fill="#ffffff"/>
+    <circle cx="688" cy="379" r="19" fill="#ffffff"/>
+
+    <path d="M 347 773 L 721 773 L 693 853 L 373 853 Z" fill="#1a0000"/>
+    <line x1="427" y1="773" x2="427" y2="853" stroke="#ffe066" stroke-width="8"/>
+    <line x1="533" y1="773" x2="533" y2="853" stroke="#ffe066" stroke-width="8"/>
+    <line x1="640" y1="773" x2="640" y2="853" stroke="#ffe066" stroke-width="8"/>
+
+    <g fill="#1a0000">
+      <circle cx="85"  cy="85"  r="16"/>
+      <circle cx="983" cy="85"  r="16"/>
+      <circle cx="85"  cy="983" r="16"/>
+      <circle cx="983" cy="983" r="16"/>
+    </g>
+  </g>
+</svg>

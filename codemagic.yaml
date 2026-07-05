@@ -1,0 +1,97 @@
+# Codemagic CI/CD config for Blockfall Ascent (iOS build).
+#
+# Runs on the free Codemagic macOS M2 runners. Publishes an .ipa to
+# TestFlight. Triggered manually to avoid burning free-tier minutes on
+# every push.
+#
+# Setup required in Codemagic UI before first run:
+#   1. Connect this GitHub repo to Codemagic.
+#   2. Team Integrations -> App Store Connect: add an API key
+#      (Users and Access -> Integrations -> App Store Connect API in
+#      https://appstoreconnect.apple.com). Codemagic will auto-generate
+#      the signing cert + provisioning profile from it.
+#   3. Environment variables group `appstore_credentials` with:
+#        APP_STORE_CONNECT_KEY_IDENTIFIER
+#        APP_STORE_CONNECT_ISSUER_ID
+#        APP_STORE_CONNECT_PRIVATE_KEY   (mark as Secure)
+#   4. Register the app in App Store Connect with bundle id
+#      com.blockfall.ascent BEFORE the first Codemagic build so TestFlight
+#      upload has a target.
+
+workflows:
+  ios-release:
+    name: iOS release build
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      groups:
+        - appstore_credentials
+      vars:
+        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
+        XCODE_SCHEME: "App"
+        BUNDLE_ID: "com.blockfall.ascent"
+        APP_STORE_APP_ID: ""  # optional; leave empty until TestFlight step is enabled
+      node: 20
+      xcode: latest
+      cocoapods: default
+    triggering:
+      # Manual trigger only. Change to `push` on the `main` branch once
+      # you're comfortable spending build minutes on every commit.
+      events: []
+    cache:
+      cache_paths:
+        - $HOME/Library/Caches/CocoaPods
+        - $HOME/.npm
+        - node_modules
+        - ios/App/Pods
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm ci
+      - name: Build web bundle
+        script: |
+          npm run build
+      - name: Capacitor sync (iOS)
+        script: |
+          npx cap sync ios
+      - name: Install CocoaPods
+        script: |
+          cd ios/App
+          pod install --repo-update
+      - name: Set build number from Codemagic build index
+        script: |
+          cd ios/App
+          agvtool new-version -all $(($BUILD_NUMBER + 1)) || true
+      - name: Set up code signing
+        script: |
+          keychain initialize
+          app-store-connect fetch-signing-files \
+            "$BUNDLE_ID" \
+            --type IOS_APP_STORE \
+            --create
+          keychain add-certificates
+          xcode-project use-profiles
+      - name: Build .ipa
+        script: |
+          xcode-project build-ipa \
+            --workspace "$XCODE_WORKSPACE" \
+            --scheme "$XCODE_SCHEME"
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - $HOME/Library/Developer/Xcode/DerivedData/**/Build/**/*.dSYM
+    publishing:
+      # Uncomment once App Store Connect app record exists and you're ready
+      # to push builds to TestFlight automatically.
+      #
+      # app_store_connect:
+      #   auth: integration
+      #   submit_to_testflight: true
+      #   beta_groups:
+      #     - Internal
+      email:
+        recipients:
+          - REPLACE_WITH_YOUR_EMAIL
+        notify:
+          success: true
+          failure: true

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Blockfall Ascent app icon - 80s arcade box art style.
+  Airbrushed sunset, chrome-bevelled block character, retro perspective grid,
+  sunburst rays, lightning. All within a 1024x1024 icon safe zone.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#1a0033"/>
+      <stop offset="30%"  stop-color="#4a0e5c"/>
+      <stop offset="55%"  stop-color="#c62368"/>
+      <stop offset="78%"  stop-color="#ff7a29"/>
+      <stop offset="100%" stop-color="#ffe066"/>
+    </linearGradient>
+    <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="#ffffff"/>
+      <stop offset="35%" stop-color="#ffee88"/>
+      <stop offset="75%" stop-color="#ff7a29" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#ff2a00" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="blockChrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#fff5b5"/>
+      <stop offset="18%"  stop-color="#ffe066"/>
+      <stop offset="45%"  stop-color="#ffb020"/>
+      <stop offset="72%"  stop-color="#c46600"/>
+      <stop offset="100%" stop-color="#3a1500"/>
+    </linearGradient>
+    <linearGradient id="topGloss" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="60%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bevelL" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="bevelR" x1="1" y1="0" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="gridFade" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"   stop-color="#00ffff" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#00ffff" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="haze" cx="50%" cy="70%" r="60%">
+      <stop offset="0%"   stop-color="#ff7a29" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#ff7a29" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="streak" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%"  stop-color="#ffff88" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#ffff88" stop-opacity="0.9"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="14"/>
+      <feOffset dx="0" dy="18" result="s"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.65"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1024" height="1024" fill="url(#sky)"/>
+  <rect width="1024" height="1024" fill="url(#haze)"/>
+
+  <!-- Sunburst rays -->
+  <g transform="translate(512 720)" opacity="0.55">
+    <g fill="#ffee88">
+      <polygon points="0,0 -700,-70 -700,-30"/>
+      <polygon points="0,0 -680,-200 -640,-160"/>
+      <polygon points="0,0 -560,-380 -520,-330"/>
+      <polygon points="0,0 -360,-540 -320,-490"/>
+      <polygon points="0,0 -140,-640 -100,-620"/>
+      <polygon points="0,0  140,-640  100,-620"/>
+      <polygon points="0,0  360,-540  320,-490"/>
+      <polygon points="0,0  560,-380  520,-330"/>
+      <polygon points="0,0  680,-200  640,-160"/>
+      <polygon points="0,0  700,-70   700,-30"/>
+    </g>
+  </g>
+
+  <circle cx="512" cy="720" r="200" fill="url(#sun)"/>
+
+  <!-- Retro perspective grid -->
+  <g stroke="url(#gridFade)" stroke-width="2" fill="none" opacity="0.9">
+    <line x1="0"    y1="1024" x2="1024" y2="1024"/>
+    <line x1="80"   y1="960"  x2="944"  y2="960"/>
+    <line x1="150"  y1="900"  x2="874"  y2="900"/>
+    <line x1="215"  y1="850"  x2="809"  y2="850"/>
+    <line x1="270"  y1="810"  x2="754"  y2="810"/>
+    <line x1="315"  y1="775"  x2="709"  y2="775"/>
+    <line x1="352"  y1="748"  x2="672"  y2="748"/>
+    <line x1="382"  y1="730"  x2="642"  y2="730"/>
+    <line x1="512" y1="720" x2="0"    y2="1024"/>
+    <line x1="512" y1="720" x2="120"  y2="1024"/>
+    <line x1="512" y1="720" x2="240"  y2="1024"/>
+    <line x1="512" y1="720" x2="360"  y2="1024"/>
+    <line x1="512" y1="720" x2="440"  y2="1024"/>
+    <line x1="512" y1="720" x2="512"  y2="1024"/>
+    <line x1="512" y1="720" x2="584"  y2="1024"/>
+    <line x1="512" y1="720" x2="664"  y2="1024"/>
+    <line x1="512" y1="720" x2="784"  y2="1024"/>
+    <line x1="512" y1="720" x2="904"  y2="1024"/>
+    <line x1="512" y1="720" x2="1024" y2="1024"/>
+  </g>
+
+  <!-- Motion streaks trailing below the block -->
+  <g opacity="0.75">
+    <rect x="360" y="580" width="20" height="180" fill="url(#streak)" rx="6"/>
+    <rect x="500" y="560" width="24" height="220" fill="url(#streak)" rx="8"/>
+    <rect x="640" y="600" width="18" height="160" fill="url(#streak)" rx="6"/>
+  </g>
+
+  <!-- Lightning bolts -->
+  <g fill="#e0f7ff" opacity="0.9" filter="url(#glow)">
+    <polygon points="150,120 220,300 170,320 230,520 120,300 175,290 130,140"/>
+    <polygon points="874,180 810,360 860,380 800,560 910,340 855,330 900,200"/>
+  </g>
+
+  <!-- Distant mountain silhouettes -->
+  <path d="M 0 780 L 90 700 L 170 760 L 260 680 L 340 750 L 420 690 L 500 740 L 600 680
+           L 700 760 L 800 700 L 900 750 L 1024 700 L 1024 800 L 0 800 Z"
+        fill="#3a0e4a" opacity="0.6"/>
+
+  <!-- Hero block character -->
+  <g transform="translate(312 240)" filter="url(#softShadow)">
+    <rect x="0" y="0" width="400" height="400" rx="48" ry="48" fill="url(#blockChrome)"/>
+    <rect x="0" y="0" width="80" height="400" rx="48" ry="48" fill="url(#bevelL)"/>
+    <rect x="320" y="0" width="80" height="400" rx="48" ry="48" fill="url(#bevelR)"/>
+    <rect x="8" y="8" width="384" height="140" rx="40" ry="40" fill="url(#topGloss)"/>
+    <rect x="0" y="0" width="400" height="400" rx="48" ry="48"
+          fill="none" stroke="#00e5ff" stroke-width="4" opacity="0.85" filter="url(#glow)"/>
+    <rect x="0" y="0" width="400" height="400" rx="48" ry="48"
+          fill="none" stroke="#1a0000" stroke-width="6"/>
+
+    <ellipse cx="135" cy="175" rx="55" ry="52" fill="#1a0000"/>
+    <ellipse cx="265" cy="175" rx="55" ry="52" fill="#1a0000"/>
+    <ellipse cx="135" cy="170" rx="48" ry="45" fill="#ffffff"/>
+    <ellipse cx="265" cy="170" rx="48" ry="45" fill="#ffffff"/>
+    <circle cx="135" cy="150" r="22" fill="#0a0010"/>
+    <circle cx="265" cy="150" r="22" fill="#0a0010"/>
+    <circle cx="140" cy="145" r="6" fill="#00e5ff"/>
+    <circle cx="270" cy="145" r="6" fill="#00e5ff"/>
+    <circle cx="128" cy="142" r="7" fill="#ffffff"/>
+    <circle cx="258" cy="142" r="7" fill="#ffffff"/>
+
+    <!-- Gritted teeth mouth for that determined 80s hero look -->
+    <path d="M 130 290 L 270 290 L 260 320 L 140 320 Z" fill="#1a0000"/>
+    <line x1="160" y1="290" x2="160" y2="320" stroke="#ffe066" stroke-width="3"/>
+    <line x1="200" y1="290" x2="200" y2="320" stroke="#ffe066" stroke-width="3"/>
+    <line x1="240" y1="290" x2="240" y2="320" stroke="#ffe066" stroke-width="3"/>
+
+    <!-- Mechanical rivets -->
+    <g fill="#1a0000">
+      <circle cx="32"  cy="32"  r="6"/>
+      <circle cx="368" cy="32"  r="6"/>
+      <circle cx="32"  cy="368" r="6"/>
+      <circle cx="368" cy="368" r="6"/>
+    </g>
+    <g fill="#ffe066">
+      <circle cx="30"  cy="30"  r="2"/>
+      <circle cx="366" cy="30"  r="2"/>
+      <circle cx="30"  cy="366" r="2"/>
+      <circle cx="366" cy="366" r="2"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="630" height="500" viewBox="0 0 630 500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#05071a"/>
+      <stop offset="55%" stop-color="#0a1030"/>
+      <stop offset="100%" stop-color="#050510"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#6cf0ff"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+
+  <rect x="0" y="0" width="630" height="500" fill="url(#bg)"/>
+
+  <!-- background block grid (very faint) -->
+  <g opacity="0.06" fill="#ffffff">
+    <rect x="0" y="0" width="630" height="1"/><rect x="0" y="40" width="630" height="1"/><rect x="0" y="80" width="630" height="1"/><rect x="0" y="120" width="630" height="1"/><rect x="0" y="160" width="630" height="1"/><rect x="0" y="200" width="630" height="1"/><rect x="0" y="240" width="630" height="1"/><rect x="0" y="280" width="630" height="1"/><rect x="0" y="320" width="630" height="1"/><rect x="0" y="360" width="630" height="1"/><rect x="0" y="400" width="630" height="1"/><rect x="0" y="440" width="630" height="1"/><rect x="0" y="480" width="630" height="1"/>
+    <rect x="0" y="0" width="1" height="500"/><rect x="40" y="0" width="1" height="500"/><rect x="80" y="0" width="1" height="500"/><rect x="120" y="0" width="1" height="500"/><rect x="160" y="0" width="1" height="500"/><rect x="200" y="0" width="1" height="500"/><rect x="240" y="0" width="1" height="500"/><rect x="280" y="0" width="1" height="500"/><rect x="320" y="0" width="1" height="500"/><rect x="360" y="0" width="1" height="500"/><rect x="400" y="0" width="1" height="500"/><rect x="440" y="0" width="1" height="500"/><rect x="480" y="0" width="1" height="500"/><rect x="520" y="0" width="1" height="500"/><rect x="560" y="0" width="1" height="500"/><rect x="600" y="0" width="1" height="500"/>
+  </g>
+
+  <!-- falling / stacked blocks -->
+  <rect x="-34" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="-34" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="0" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="0" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="0" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="34" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="34" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="68" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="68" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="68" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="68" y="364" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.75"/><rect x="102" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="102" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="102" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="102" y="364" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.75"/><rect x="136" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="170" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="170" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="170" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="170" y="364" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.75"/><rect x="204" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="204" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="204" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="238" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="238" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="238" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="238" y="364" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.75"/><rect x="272" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="272" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="272" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="306" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="306" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="306" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="306" y="364" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.75"/><rect x="340" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="340" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="340" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="374" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="408" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="408" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="442" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="442" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="476" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="476" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="510" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="544" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="578" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="578" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="578" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="612" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="612" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="612" y="398" width="32" height="32" rx="3" fill="#b0602a" opacity="0.80"/><rect x="612" y="364" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.75"/><rect x="646" y="466" width="32" height="32" rx="3" fill="#b0602a" opacity="0.90"/><rect x="646" y="432" width="32" height="32" rx="3" fill="#8a4a20" opacity="0.85"/><rect x="646" y="272" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="34" y="272" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="306" y="170" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="238" y="68" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="204" y="102" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="442" y="136" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="578" y="238" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="170" y="272" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="238" y="34" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="340" y="272" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="102" y="170" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="510" y="204" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="442" y="204" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="204" y="238" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="68" y="170" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="374" y="136" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="646" y="238" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="510" y="272" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="272" y="136" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="204" y="204" width="32" height="32" rx="3" fill="#2a6fb0" opacity="0.85"/><rect x="612" y="306" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/><rect x="340" y="272" width="32" height="32" rx="3" fill="#1a5a95" opacity="0.85"/>
+
+  <!-- coins -->
+  <circle cx="418.3" cy="291.3" r="6.8" fill="#ffd84a" opacity="0.9"/><circle cx="418.3" cy="291.3" r="9.8" fill="#ffd84a" opacity="0.15"/><circle cx="447.0" cy="365.3" r="6.4" fill="#ffd84a" opacity="0.9"/><circle cx="447.0" cy="365.3" r="9.4" fill="#ffd84a" opacity="0.15"/><circle cx="107.8" cy="104.2" r="8.7" fill="#ffd84a" opacity="0.9"/><circle cx="107.8" cy="104.2" r="11.7" fill="#ffd84a" opacity="0.15"/><circle cx="179.7" cy="184.7" r="6.2" fill="#ffd84a" opacity="0.9"/><circle cx="179.7" cy="184.7" r="9.2" fill="#ffd84a" opacity="0.15"/><circle cx="342.1" cy="163.5" r="6.0" fill="#ffd84a" opacity="0.9"/><circle cx="342.1" cy="163.5" r="9.0" fill="#ffd84a" opacity="0.15"/><circle cx="274.1" cy="157.1" r="6.4" fill="#ffd84a" opacity="0.9"/><circle cx="274.1" cy="157.1" r="9.4" fill="#ffd84a" opacity="0.15"/>
+
+  <!-- player -->
+  
+  <g transform="translate(293 318)">
+    <rect x="0" y="0" width="44" height="44" rx="6" fill="#e8ffff" stroke="#6cf0ff" stroke-width="3"/>
+    <rect x="9" y="12" width="8" height="10" rx="2" fill="#0a0a10"/>
+    <rect x="27" y="12" width="8" height="10" rx="2" fill="#0a0a10"/>
+    <rect x="14" y="30" width="16" height="4" rx="2" fill="#0a0a10"/>
+    <circle cx="22" cy="22" r="34" fill="#6cf0ff" opacity="0.12"/>
+  </g>
+
+  <!-- title glow -->
+  <g filter="url(#glow)" opacity="0.55">
+    <text x="315" y="118" text-anchor="middle"
+      font-family="Impact, 'Arial Black', system-ui, sans-serif"
+      font-size="78" font-weight="900" fill="#6cf0ff">BLOCKFALL</text>
+  </g>
+
+  <!-- title -->
+  <text x="315" y="118" text-anchor="middle"
+    font-family="Impact, 'Arial Black', system-ui, sans-serif"
+    font-size="78" font-weight="900" fill="url(#titleGrad)"
+    stroke="#05071a" stroke-width="3" paint-order="stroke">BLOCKFALL</text>
+
+  <text x="315" y="168" text-anchor="middle"
+    font-family="Impact, 'Arial Black', system-ui, sans-serif"
+    font-size="52" font-weight="900" fill="#ffd84a"
+    stroke="#05071a" stroke-width="3" paint-order="stroke"
+    letter-spacing="6">ASCENT</text>
+
+  <!-- tagline -->
+  <text x="315" y="200" text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="15" font-weight="700" fill="#a0c8d0"
+    letter-spacing="3">CLIMB . DODGE . SURVIVE</text>
+</svg>
