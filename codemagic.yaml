@@ -30,7 +30,6 @@ workflows:
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
         BUNDLE_ID: "com.blockfall.ascent"
-        APP_STORE_APP_ID: ""  # optional; leave empty until TestFlight step is enabled
       node: 20
       xcode: latest
       cocoapods: default
@@ -91,7 +90,7 @@ workflows:
       #     - Internal
       email:
         recipients:
-          - REPLACE_WITH_YOUR_EMAIL
+          - Stevensedwick6@gmail.com
         notify:
           success: true
           failure: true
