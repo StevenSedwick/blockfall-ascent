@@ -59,16 +59,21 @@ workflows:
       - name: Set up code signing
         script: |
           keychain initialize
-          # First-run: create a fresh iOS Distribution cert and save the
-          # private key locally so fetch-signing-files can reuse it.
-          # Ignored on re-runs where the cert already exists.
+          # Generate a fresh RSA private key and use it for both cert creation
+          # and provisioning-profile fetch. On re-runs the existing cert is
+          # reused via --certificate-key-path.
+          mkdir -p ~/certs
+          if [ ! -f ~/certs/cert_key.pem ]; then
+            openssl genrsa -out ~/certs/cert_key.pem 2048
+          fi
           app-store-connect certificates create \
             --type IOS_DISTRIBUTION \
-            --save \
-            --no-warnings || echo "distribution cert already exists, continuing"
+            --certificate-key-path ~/certs/cert_key.pem \
+            --save || echo "distribution cert already exists, continuing"
           app-store-connect fetch-signing-files \
             "$BUNDLE_ID" \
             --type IOS_APP_STORE \
+            --certificate-key-path ~/certs/cert_key.pem \
             --create
           keychain add-certificates
           xcode-project use-profiles
