@@ -30,6 +30,7 @@ workflows:
         XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_SCHEME: "App"
         BUNDLE_ID: "com.blockfall.ascent"
+        APPLE_TEAM_ID: "99MZV2FQY9"
         SKIP_PATCH_PACKAGE: "1"
       node: 22
       xcode: latest
