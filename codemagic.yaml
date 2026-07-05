@@ -27,23 +27,21 @@ workflows:
       groups:
         - appstore_credentials
       vars:
-        XCODE_WORKSPACE: "ios/App/App.xcworkspace"
+        XCODE_PROJECT: "ios/App/App.xcodeproj"
         XCODE_SCHEME: "App"
         BUNDLE_ID: "com.blockfall.ascent"
         SKIP_PATCH_PACKAGE: "1"
       node: 22
       xcode: latest
-      cocoapods: default
     triggering:
       # Manual trigger only. Change to `push` on the `main` branch once
       # you're comfortable spending build minutes on every commit.
       events: []
     cache:
       cache_paths:
-        - $HOME/Library/Caches/CocoaPods
         - $HOME/.npm
         - node_modules
-        - ios/App/Pods
+        - $HOME/Library/Developer/Xcode/DerivedData
     scripts:
       - name: Install npm dependencies
         script: |
@@ -54,10 +52,6 @@ workflows:
       - name: Capacitor sync (iOS)
         script: |
           npx cap sync ios
-      - name: Install CocoaPods
-        script: |
-          cd ios/App
-          pod install --repo-update
       - name: Set build number from Codemagic build index
         script: |
           cd ios/App
@@ -74,7 +68,7 @@ workflows:
       - name: Build .ipa
         script: |
           xcode-project build-ipa \
-            --workspace "$XCODE_WORKSPACE" \
+            --project "$XCODE_PROJECT" \
             --scheme "$XCODE_SCHEME"
     artifacts:
       - build/ios/ipa/*.ipa
