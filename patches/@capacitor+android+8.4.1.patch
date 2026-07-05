@@ -1,8 +1,8 @@
 diff --git a/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java b/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java
-index 0000000..0000001 100644
+index abcdef1..1234567 100644
 --- a/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java
 +++ b/node_modules/@capacitor/android/capacitor/src/main/java/com/getcapacitor/plugin/SystemBars.java
-@@ -342,7 +342,13 @@ public class SystemBars extends Plugin {
+@@ -342,8 +342,14 @@ public class SystemBars extends Plugin {
      private Integer getWebViewMajorVersion() {
          PackageInfo info = WebViewCompat.getCurrentWebViewPackage(getContext());
          if (info != null && info.versionName != null) {

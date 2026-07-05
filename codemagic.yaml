@@ -30,6 +30,7 @@ workflows:
         XCODE_WORKSPACE: "ios/App/App.xcworkspace"
         XCODE_SCHEME: "App"
         BUNDLE_ID: "com.blockfall.ascent"
+        SKIP_PATCH_PACKAGE: "1"
       node: 20
       xcode: latest
       cocoapods: default

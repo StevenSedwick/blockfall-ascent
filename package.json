@@ -14,7 +14,7 @@
     "android:build-apk": "vite build && cap sync android && cd android && gradlew assembleRelease",
     "android:build-aab": "vite build && cap sync android && cd android && gradlew bundleRelease",
     "assets": "node scripts/generate-assets.mjs",
-    "postinstall": "patch-package"
+    "postinstall": "node scripts/postinstall.mjs"
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.0.0",
