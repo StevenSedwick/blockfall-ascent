@@ -34,3 +34,17 @@ const config: Phaser.Types.Core.GameConfig = {
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const game = new Phaser.Game(config);
+
+// iOS WebView (Capacitor) and some Android browsers don't reliably fire
+// `resize` after an orientation change until the layout viewport has
+// finished settling. Force Phaser to re-measure a couple of times so the
+// canvas actually follows the new orientation.
+function refreshScale(): void {
+  game.scale.refresh();
+}
+window.addEventListener('orientationchange', () => {
+  setTimeout(refreshScale, 50);
+  setTimeout(refreshScale, 300);
+  setTimeout(refreshScale, 600);
+});
+window.addEventListener('resize', () => setTimeout(refreshScale, 50));

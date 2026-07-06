@@ -84,6 +84,14 @@ export class MenuScene extends Phaser.Scene {
     if (showStack) {
       this.input.keyboard?.on('keydown-TWO', () => this.startGame('stack'));
     }
+
+    // Rebuild the whole scene on resize/orientation change - layout is
+    // computed from width/height in create() and has no live-update path.
+    const onResize = () => this.scene.restart();
+    this.scale.on('resize', onResize);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.scale.off('resize', onResize);
+    });
   }
 
   private makeModeButton(

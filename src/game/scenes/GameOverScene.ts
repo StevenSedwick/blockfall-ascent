@@ -195,7 +195,13 @@ export class GameOverScene extends Phaser.Scene {
       window.removeEventListener('mousedown', domTap);
       window.removeEventListener('keydown', domKey);
       document.removeEventListener('visibilitychange', onVis);
+      this.scale.off('resize', onResize);
     });
+
+    // Rebuild layout on orientation change - all positions are computed
+    // from width/height in create() and don't self-update.
+    const onResize = () => this.scene.restart({ ...this.stats, mode: this.mode });
+    this.scale.on('resize', onResize);
 
     // Fire the interstitial as soon as the game-over screen appears (every
     // Nth death). The ad Activity takes over the whole screen; when the
