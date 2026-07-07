@@ -20,9 +20,11 @@ export type GameMode = 'ascent' | 'stack';
 // On very small screens (e.g. flip-phone WebViews at 240x320) the on-screen
 // joystick + button cluster would eat most of the play area. Hide them
 // there and let external keyboards / D-pads drive the game. Real phones
-// (>=360x480) get the normal touch controls.
+// get the normal touch controls in either orientation.
 function shouldShowTouchControls(w: number, h: number): boolean {
-  return w >= 360 && h >= 480;
+  const long = Math.max(w, h);
+  const short = Math.min(w, h);
+  return long >= 480 && short >= 300;
 }
 
 export class GameScene extends Phaser.Scene {

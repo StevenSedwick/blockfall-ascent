@@ -3,9 +3,12 @@ import type { GameMode } from './GameScene';
 
 // Some devices (e.g. flip-phone WebViews at 240x320) can't fit two stacked
 // mode buttons plus a title without overlap. On those screens we show only
-// Ascent. Real phones (>=360x480) get the normal two-mode menu.
+// Ascent. Real phones (>=360x480 in the longer axis) get the normal two-
+// mode menu regardless of orientation.
 function isTinyScreen(w: number, h: number): boolean {
-  return w < 360 || h < 480;
+  const long = Math.max(w, h);
+  const short = Math.min(w, h);
+  return long < 480 || short < 300;
 }
 
 // Mode-select screen shown once at boot. Two big touch-friendly buttons -
