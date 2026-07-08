@@ -1056,10 +1056,8 @@ export class GameScene extends Phaser.Scene {
   private updateHud(timeMs: number): void {
     const seconds = (timeMs - this.runStartMs) / 1000;
     const stats = makeStats(this.maxHeightPx, seconds);
-    const w = this.physics.world.bounds.width;
-    const px = Math.round(this.player.x);
     this.hudText.setText(
-      `Height: ${Math.floor(this.maxHeightPx)}   Time: ${seconds.toFixed(1)}s   Coins: ${this.coinsCollected}   Score: ${stats.score + this.coinScore}\nx:${px} / w:${w}`
+      `Height: ${Math.floor(this.maxHeightPx)}   Time: ${seconds.toFixed(1)}s   Coins: ${this.coinsCollected}   Score: ${stats.score + this.coinScore}`
     );
   }
 
