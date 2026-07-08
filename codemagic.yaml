@@ -96,3 +96,89 @@ workflows:
         notify:
           success: true
           failure: true
+
+  android-release:
+    name: Android release build (AAB)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      vars:
+        PACKAGE_NAME: "com.blockfall.ascent"
+      node: 22
+    triggering:
+      # Manual trigger only.
+      events: []
+    cache:
+      cache_paths:
+        - $HOME/.npm
+        - node_modules
+        - $HOME/.gradle/caches
+        - $HOME/.gradle/wrapper
+        # Persist the upload keystore across builds. If it's ever lost,
+        # a new one is auto-generated on the next run and MUST be
+        # downloaded from the build artifacts immediately.
+        - $HOME/blockfall_keystore
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          npm ci
+      - name: Build web bundle
+        script: |
+          npm run build
+      - name: Capacitor sync (Android)
+        script: |
+          npx cap sync android
+      - name: Provision upload keystore
+        script: |
+          set -e
+          KEY_DIR="$HOME/blockfall_keystore"
+          mkdir -p "$KEY_DIR"
+          if [ ! -f "$KEY_DIR/blockfall.keystore" ]; then
+            echo "No keystore found. Generating a fresh upload keystore."
+            echo "!!! DOWNLOAD THE ARTIFACT keystore-bundle.zip AND STORE IT SAFELY !!!"
+            KS_PASS=$(openssl rand -base64 24 | tr -d '=+/')
+            KEY_PASS=$(openssl rand -base64 24 | tr -d '=+/')
+            keytool -genkeypair \
+              -v \
+              -keystore "$KEY_DIR/blockfall.keystore" \
+              -alias blockfall \
+              -keyalg RSA \
+              -keysize 2048 \
+              -validity 10000 \
+              -storepass "$KS_PASS" \
+              -keypass "$KEY_PASS" \
+              -dname "CN=Steven Sedwick, OU=Blockfall, O=Blockfall, L=Unknown, S=Unknown, C=US"
+            printf 'storeFile=blockfall.keystore\nstorePassword=%s\nkeyAlias=blockfall\nkeyPassword=%s\n' \
+              "$KS_PASS" "$KEY_PASS" > "$KEY_DIR/keystore.properties"
+            (cd "$KEY_DIR" && zip -r "$CM_BUILD_DIR/keystore-bundle.zip" blockfall.keystore keystore.properties)
+          else
+            echo "Reusing cached keystore."
+          fi
+          # Wire up for Gradle: build.gradle reads from workspace-root keystore.properties.
+          cp "$KEY_DIR/blockfall.keystore" "$CM_BUILD_DIR/blockfall.keystore"
+          cp "$KEY_DIR/keystore.properties" "$CM_BUILD_DIR/keystore.properties"
+      - name: Set version code from build number
+        script: |
+          cd android
+          sed -i.bak "s/versionCode 1/versionCode $(($PROJECT_BUILD_NUMBER + 1))/" app/build.gradle
+          rm -f app/build.gradle.bak
+      - name: Build signed AAB
+        script: |
+          cd android
+          chmod +x ./gradlew
+          ./gradlew bundleRelease --no-daemon
+      - name: Build signed APK (for on-device testing)
+        script: |
+          cd android
+          ./gradlew assembleRelease --no-daemon
+    artifacts:
+      - android/app/build/outputs/bundle/release/*.aab
+      - android/app/build/outputs/apk/release/*.apk
+      - keystore-bundle.zip
+    publishing:
+      email:
+        recipients:
+          - Stevensedwick6@gmail.com
+        notify:
+          success: true
+          failure: true
