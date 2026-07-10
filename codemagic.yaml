@@ -134,11 +134,27 @@ workflows:
           set -e
           KEY_DIR="$HOME/blockfall_keystore"
           mkdir -p "$KEY_DIR"
-          if [ ! -f "$KEY_DIR/blockfall.keystore" ]; then
-            echo "No keystore found. Generating a fresh upload keystore."
+          # Health check: if either file is missing OR the properties file
+          # can't unlock the keystore, wipe and regenerate. Guards against
+          # partial cache state from earlier failed builds.
+          NEEDS_GEN=0
+          if [ ! -f "$KEY_DIR/blockfall.keystore" ] || [ ! -f "$KEY_DIR/keystore.properties" ]; then
+            NEEDS_GEN=1
+          else
+            PASS=$(grep '^storePassword=' "$KEY_DIR/keystore.properties" | cut -d= -f2-)
+            if ! keytool -list -keystore "$KEY_DIR/blockfall.keystore" -storepass "$PASS" -alias blockfall > /dev/null 2>&1; then
+              echo "Cached keystore failed self-check. Regenerating."
+              NEEDS_GEN=1
+            fi
+          fi
+          if [ "$NEEDS_GEN" = "1" ]; then
+            rm -f "$KEY_DIR/blockfall.keystore" "$KEY_DIR/keystore.properties"
+            echo "Generating fresh upload keystore."
             echo "!!! DOWNLOAD THE ARTIFACT keystore-bundle.zip AND STORE IT SAFELY !!!"
-            KS_PASS=$(openssl rand -base64 24 | tr -d '=+/')
-            KEY_PASS=$(openssl rand -base64 24 | tr -d '=+/')
+            # One password used for both store and key. Google's own docs
+            # recommend this for upload keystores; it also avoids a whole
+            # class of "Given final block not properly padded" bugs.
+            PASS=$(openssl rand -hex 24)
             keytool -genkeypair \
               -v \
               -keystore "$KEY_DIR/blockfall.keystore" \
@@ -146,15 +162,15 @@ workflows:
               -keyalg RSA \
               -keysize 2048 \
               -validity 10000 \
-              -storepass "$KS_PASS" \
-              -keypass "$KEY_PASS" \
+              -storepass "$PASS" \
+              -keypass "$PASS" \
               -dname "CN=Steven Sedwick, OU=Blockfall, O=Blockfall, L=Unknown, S=Unknown, C=US"
             printf 'storeFile=blockfall.keystore\nstorePassword=%s\nkeyAlias=blockfall\nkeyPassword=%s\n' \
-              "$KS_PASS" "$KEY_PASS" > "$KEY_DIR/keystore.properties"
-            (cd "$KEY_DIR" && zip -r "$CM_BUILD_DIR/keystore-bundle.zip" blockfall.keystore keystore.properties)
+              "$PASS" "$PASS" > "$KEY_DIR/keystore.properties"
           else
-            echo "Reusing cached keystore."
+            echo "Reusing cached keystore (self-check passed)."
           fi
+          (cd "$KEY_DIR" && zip -r "$CM_BUILD_DIR/keystore-bundle.zip" blockfall.keystore keystore.properties)
           # Wire up for Gradle: build.gradle reads from workspace-root keystore.properties.
           cp "$KEY_DIR/blockfall.keystore" "$CM_BUILD_DIR/blockfall.keystore"
           cp "$KEY_DIR/keystore.properties" "$CM_BUILD_DIR/keystore.properties"
