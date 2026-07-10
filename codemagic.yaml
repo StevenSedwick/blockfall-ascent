@@ -105,6 +105,7 @@ workflows:
       vars:
         PACKAGE_NAME: "com.blockfall.ascent"
       node: 22
+      java: 21
     triggering:
       # Manual trigger only.
       events: []
